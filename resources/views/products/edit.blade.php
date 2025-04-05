@@ -59,6 +59,19 @@
                             @enderror
                         </div>
 
+                        <div class="mb-4">
+                            <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Imagen</label>
+                            @if($product->image)
+                                <div class="mb-2">
+                                    <img src="{{ $product->image_url }}" alt="{{ $product->nombre }}" class="h-32 w-32 object-cover rounded">
+                                </div>
+                            @endif
+                            <input type="file" name="image" id="image" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            @error('image')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <div class="flex items-center justify-between">
                             <a href="{{ route('products.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                                 Cancelar

@@ -26,6 +26,7 @@
                         <table class="min-w-full bg-white">
                             <thead>
                                 <tr>
+                                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Imagen</th>
                                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nombre</th>
                                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Categoría</th>
                                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Precio</th>
@@ -36,6 +37,15 @@
                             <tbody>
                                 @foreach($products as $product)
                                     <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap border-b border-gray-300">
+                                            @if($product->image)
+                                                <img src="{{ $product->image_url }}" alt="{{ $product->nombre }}" class="h-16 w-16 object-cover rounded">
+                                            @else
+                                                <div class="h-16 w-16 bg-gray-200 rounded flex items-center justify-center">
+                                                    <span class="text-gray-400">Sin imagen</span>
+                                                </div>
+                                            @endif
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap border-b border-gray-300">{{ $product->nombre }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap border-b border-gray-300">{{ $product->category->nombre }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap border-b border-gray-300">${{ number_format($product->precio, 2) }}</td>
